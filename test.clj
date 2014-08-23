@@ -1,6 +1,6 @@
 (let [lines     (clojure.string/split-lines (slurp "problem.clj"))
 			separator (.indexOf lines "")
-			tests     (take (dec separator) lines)
+			tests     (take separator lines)
 			solution  (clojure.string/join "\n" (drop (inc separator) lines))]
 	(doseq [test tests]
 		(let [code         (clojure.string/replace test "__" solution)
