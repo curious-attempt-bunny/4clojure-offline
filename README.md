@@ -1,3 +1,7 @@
+# Purpose
+
+Make it easier and quicker to iterate on [4clojure](http://4clojure.com) problems.
+
 # Usage
 
 1. Start up a REPL. E.g. `lein repl`
