@@ -21,7 +21,7 @@ Here's an incorrect solution to [problem 5](https://github.com/4clojure/4clojure
 (conj [2 3 4] 1)
 ```
 
-Running `test.clj` results in each test case being echoed, along with what first form element evaluated to, and if the test passed:
+Running `test.clj` results in each test case being echoed, along with evaluation of the form containing the substition, and if the test passed:
 
 ```clojure
 "(= __ (conj '(2 3 4) 1))"
