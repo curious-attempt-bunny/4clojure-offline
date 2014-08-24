@@ -1,5 +1,8 @@
-(= (__ 2) [2 3])
-(= (__ 5) [2 3 5 7 11])
-(= (last (__ 100)) 541)
+(= (__ "4,5,6,7,8,9") "4,9")
+(= (__ "15,16,25,36,37") "16,25,36")
 
-(fn [i] (take i (filter (fn [n] (not-any? #(= 0 (mod n %)) (drop 2 (range n)))) (drop 2 (range)))))
+(fn [str] (let [ns (map #(Integer/parseInt %) (clojure.string/split str #","))
+								sq (filter #(zero? (rem % (Math/sqrt %))) ns)] 
+						(clojure.string/join "," sq)))
+
+	
