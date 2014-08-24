@@ -1,6 +1,5 @@
-(= (__  "Have a nice day.") ["a" "day" "Have" "nice"])
-(= (__  "Clojure is a fun language!") ["a" "Clojure" "fun" "is" "language"])
-(= (__  "Fools fall for foolish follies.") ["fall" "follies" "foolish" "Fools" "for"])
+(= (__ 2) [2 3])
+(= (__ 5) [2 3 5 7 11])
+(= (last (__ 100)) 541)
 
-(fn [str] (sort-by #(.toLowerCase %)
-	          (clojure.string/split (clojure.string/replace str #"[^A-Za-z\s]" "") #" ")))
+(fn [i] (take i (filter (fn [n] (not-any? #(= 0 (mod n %)) (drop 2 (range n)))) (drop 2 (range)))))
