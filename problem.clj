@@ -1,5 +1,7 @@
-(= [21 6 1] ((__ + max min) 2 3 5 1 6 4))
-(= ["HELLO" 5] ((__ #(.toUpperCase %) count) "hello"))
-(= [2 6 4] ((__ :a :c :b) {:a 2, :b 4, :c 6, :d 8 :e 10}))
+(= (__ 3 (range 9)) '((0 1 2) (3 4 5) (6 7 8)))
+(= (__ 2 (range 8)) '((0 1) (2 3) (4 5) (6 7)))
+(= (__ 3 (range 8)) '((0 1 2) (3 4 5)))
 
-(fn [& fs] (fn [& args] (for [f fs] (apply f args))))
+(fn part [n coll] (if (< (count coll) n)
+										[]
+										(cons (take n coll) (part n (drop n coll)))))
