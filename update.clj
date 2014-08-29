@@ -1,19 +1,23 @@
+(defn directory [problem] (str "problems/" (first (:tags problem))))
+
 (defn insert! [type problem]
 	(if (true? (:approved problem))
 			(do
-				(let [difficulty (first (:tags problem))
-							directory  (str "problems/" difficulty)
-							id         (format "%02d" (:_id problem))
-							filename   (str id "_" (:title problem))
-							path       (str directory "/" filename)
+				(let [id         (format "%02d" (:_id problem))
+							identifier (clojure.string/replace (clojure.string/lower-case (:title problem)) #"[^a-z]+" "_")
+							filename   (str id "_" identifier ".clj")
+							path       (str (directory problem) "/" filename)
 							url        (str "http://www.4clojure.com/problem/" (:_id problem))
 							contents   (concat [(str "; " (:description problem))]
 																 [(str "; " url)]
+																 (if (:restricted problem)
+																 		 [(str "; Don't use: " (clojure.string/join ", nor " (:restricted problem)))]
+																 		 [])
 																 [""]
 																 (map #(str "; " (clojure.string/replace % #"\n" " ") ) (:tests problem))
 																 [""]
 																 [""])]
-							(.mkdir (java.io.File. directory))
+							(.mkdir (java.io.File. (directory problem)))
 							(if-not (.exists (clojure.java.io/file path))
 								(spit path (clojure.string/join "\n" contents)))
 				))))
