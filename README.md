@@ -7,14 +7,16 @@ Make it easier and quicker to iterate on [4clojure](http://4clojure.com) problem
 1. If you want a clean slate: `rm -rf problems`
 1. Start up a REPL. E.g. `lein repl`
 1. Execute `(load-file "update.clj")` on the REPL to populate the `problems` directory.
-1. Edit a problem file.
+1. Edit a problem file to append a solution.
+1. Execute `(load-file "update.clj")` on the REPL to test all the solutions to problems.
 1. Repeat at will (from step 3).
 
 # Example
 
 Here's an incorrect solution to [problem 5](https://github.com/4clojure/4clojure/blob/0402c227a9f08048561659fdfc90696509b40ad9/src/foreclojure/data_set.clj#L53-L54):
 
-```problems/elementary/05_lists_conj.clj
+`problems/elementary/05_lists_conj.clj`:
+```clojure
 (= __ (conj '(2 3 4) 1))
 (= __ (conj '(3 4) 2 1))
 
@@ -40,7 +42,7 @@ Contributions are welcome. Open a pull request!
 # Contributors
 
 * All the authors of problems for [4clojure](https://github.com/4clojure/4clojure#contributors) - see the [commit history for data_set.clj](https://github.com/4clojure/4clojure/commits/develop/src/foreclojure/data_set.clj).
-* Merlyn Albery-Speyer 
+* [Merlyn Albery-Speyer](https://github.com/curious-attempt-bunny).
 
 # License
 
