@@ -2,9 +2,13 @@
 
 Make it easier and quicker to iterate on [4clojure](http://4clojure.com) problems.
 
+# Getting setup
+
+1. Fork this repo.
+1. `rm -rf problems` for a clean slate.
+
 # Usage
 
-1. If you want a clean slate: `rm -rf problems`
 1. Start up a REPL. E.g. `lein repl`
 1. Execute `(load-file "update.clj")` on the REPL to populate the `problems` directory.
 1. Edit a problem file to append a solution.
