@@ -9,7 +9,7 @@
 
 (defn base-content [problem]
 	(concat [(str "; " (:description problem))]
-					[(str "; " url)]
+					[(str "; " (url problem))]
 					(if (:restricted problem)
 							 [(str "; Don't use: " (clojure.string/join ", nor " (:restricted problem)))]
 							 [])
