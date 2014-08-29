@@ -46,6 +46,8 @@ false
 
 Contributions are welcome. Open a pull request!
 
+Not sure what to contribute? Pick an [open issue](https://github.com/curious-attempt-bunny/4clojure-aid/issues)!
+
 # Contributors
 
 * All the authors of problems for [4clojure](https://github.com/4clojure/4clojure#contributors) - see the [commit history for data_set.clj](https://github.com/4clojure/4clojure/commits/develop/src/foreclojure/data_set.clj).
