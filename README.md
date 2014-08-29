@@ -21,8 +21,11 @@ Here's an incorrect solution to [problem 5](https://github.com/4clojure/4clojure
 
 `problems/elementary/05_lists_conj.clj`:
 ```clojure
-(= __ (conj '(2 3 4) 1))
-(= __ (conj '(3 4) 2 1))
+; When operating on a list, the conj function will return a new list with one or more items "added" to the front.
+; http://www.4clojure.com/problem/5
+
+; (= __ (conj '(2 3 4) 1))
+; (= __ (conj '(3 4) 2 1))
 
 (conj [2 3 4] 1)
 ```
