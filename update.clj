@@ -18,13 +18,21 @@
 					[""]
 					[""]))
 
+(defn test-problem [problem]
+	; TODO
+	)
+
+(defn write-problem [problem]
+	(spit (path problem) (clojure.string/join "\n" (base-content problem))))
+
 (defn insert! [type problem]
 	(if (true? (:approved problem))
 			(do
 				(.mkdir (java.io.File. (directory problem)))
-				(if-not (.exists (clojure.java.io/file (path problem)))
-					(spit path (clojure.string/join "\n" contents)))
-				)))
+				(if (.exists (clojure.java.io/file (path problem)))
+					(test-problem problem)
+					(write-problem problem)
+				))))
 
 (.mkdir (java.io.File. "problems"))
 (eval (read-string (clojure.string/join "\n" (drop 3 (clojure.string/split (slurp "data_set.clj") #"\n")))))
