@@ -5,3 +5,4 @@
 ; (= (__ [1 1 2 3 3 2 2 3]) '(1 2 3 2 3))
 ; (= (__ [[1 2] [1 2] [3 4] [1 2]]) '([1 2] [3 4] [1 2]))
 
+reduce (fn [result elem] (if (= (last result) elem) result (conj result elem))) []
