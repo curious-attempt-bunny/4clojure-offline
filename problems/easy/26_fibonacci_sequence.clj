@@ -5,3 +5,7 @@
 ; (= (__ 6) '(1 1 2 3 5 8))
 ; (= (__ 8) '(1 1 2 3 5 8 13 21))
 
+#(loop [n (- % 2) result '(1 1)]
+	(if (> n 0)
+		(recur (dec n) (conj result (reduce + (take 2 result))))
+		(reverse result)))
