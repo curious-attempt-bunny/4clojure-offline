@@ -5,4 +5,4 @@
 ; (empty? (__ "nothing"))
 ; (= (__ "$#A(*&987Zf") "AZ")
 
-#(clojure.string/replace % #"[^A-Z]", "")
+#(clojure.string/replace % #"[^A-Z]" "")
