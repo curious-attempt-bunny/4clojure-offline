@@ -6,3 +6,8 @@
 ; (= (__ -2 2) '(-2 -1 0 1))
 ; (= (__ 5 8) '(5 6 7))
 
+(fn [min max]
+	(loop [x max result '()]
+		(if (= x min)
+			result
+			(recur (dec x) (conj result (dec x))))))
