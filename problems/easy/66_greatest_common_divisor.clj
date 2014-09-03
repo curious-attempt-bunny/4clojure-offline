@@ -6,3 +6,10 @@
 ; (= (__ 5 7) 1)
 ; (= (__ 1023 858) 33)
 
+(fn [x y]
+	(loop [gcd (min x y)]
+		(if (and
+					(zero? (rem x gcd))
+					(zero? (rem y gcd)))
+			gcd
+			(recur (dec gcd)))))
