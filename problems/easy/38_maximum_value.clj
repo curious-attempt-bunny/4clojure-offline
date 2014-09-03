@@ -6,3 +6,4 @@
 ; (= (__ 30 20) 30)
 ; (= (__ 45 67 11) 67)
 
+#(reduce (fn [acc elem] (if (> elem acc) elem acc)) %&)
