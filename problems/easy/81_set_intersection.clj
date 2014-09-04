@@ -6,3 +6,4 @@
 ; (= (__ #{0 1 2} #{3 4 5}) #{})
 ; (= (__ #{:a :b :c :d} #{:c :e :a :f :d}) #{:a :c :d})
 
+(fn [coll1 coll2] (set (filter #(and (contains? coll1 %) (contains? coll2 %)) (concat coll1 coll2))))
