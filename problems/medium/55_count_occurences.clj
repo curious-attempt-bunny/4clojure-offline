@@ -6,3 +6,6 @@
 ; (= (__ [:b :a :b :a :b]) {:a 2, :b 3})
 ; (= (__ '([1 2] [1 3] [1 3])) {[1 2] 1, [1 3] 2})
 
+(fn [coll] (->> coll (group-by identity)
+							(mapcat #(list (first %) (count (second %))))
+							(apply hash-map)))
