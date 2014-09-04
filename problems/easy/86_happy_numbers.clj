@@ -6,3 +6,16 @@
 ; (= (__ 2) false)
 ; (= (__ 3) false)
 
+(fn [n]
+	(loop [i n explored #{}]
+		(if (= i 1)
+			true
+			(if (contains? explored i)
+				false
+				(let [next (->> i .toString
+											vec
+											(map str)
+											(map #(Integer/parseInt %))
+											(map #(* % %))
+											(reduce +))]
+					(recur next (conj explored i)))))))
