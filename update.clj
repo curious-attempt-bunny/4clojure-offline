@@ -32,9 +32,7 @@
 		    																						 1
 		    																						 2)))
 		    intermediary (eval (nth form subtitutionindex))]
-		(if result
-			{:success true}
-			{:success false :test test :intermediary intermediary})))
+		{:success (true? result) :test test :intermediary intermediary}))
 
 (spit "problems/state.csv" "" :append true)
 
