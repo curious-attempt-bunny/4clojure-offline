@@ -6,3 +6,19 @@
 ; (= (__ 40) 16)
 ; (= (__ 99) 60)
 
+(fn [x]
+	(if (= x 1)
+		1
+		(reduce
+			(fn [count i]
+				(let [f (fn [x y]
+									(loop [gcd (min x y)]
+										(if (and
+													(zero? (rem x gcd))
+													(zero? (rem y gcd)))
+											gcd
+											(recur (dec gcd)))))]
+					(if (= (f i x) 1)
+						(inc count)
+						count)))
+			(range 1 x))))
