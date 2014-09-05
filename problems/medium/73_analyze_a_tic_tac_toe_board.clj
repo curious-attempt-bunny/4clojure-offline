@@ -9,3 +9,21 @@
 ; (= :o (__ [[:x :e :o]            [:x :o :e]            [:o :e :x]]))
 ; (= nil (__ [[:x :o :x]             [:x :o :x]             [:o :x :o]]))
 
+(fn [[a b c]]
+	(let [lines 
+					[a 
+					 b
+					 c
+					 [(first a) (first b) (first c)]
+					 [(second a) (second b) (second c)]
+					 [(last a) (last b) (last c)]
+					 [(first a) (second b) (last c)]
+					 [(first c) (second b) (last a)]]]
+		(first (filter
+							identity
+							(map
+								(fn [line]
+									(let [winner (first line)
+										    wins   (every? #(= winner %) line)]
+										(if (or (false? wins) (= :e winner)) nil winner)))
+								lines)))))
