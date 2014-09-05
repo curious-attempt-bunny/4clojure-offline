@@ -7,10 +7,10 @@
 ; (= (__ count [[1] [1 2] [3] [1 2 3] [2 3]])    {1 [[1] [3]], 2 [[1 2] [2 3]], 3 [[1 2 3]]})
 
 (fn [f coll]
-	(loop [elems coll result {}]
-		(if (empty? elems)
-			result
-			(let [elem (first elems)
-						key  (f elem)
-						vals (get result key [])]
-				(recur (rest elems) (assoc result key (conj vals elem)))))))
+	(reduce
+		(fn [result elem]
+			(let [key  (f elem)
+					  vals (get result key [])]
+				(assoc result key (conj vals elem))))
+		{}
+		coll))
