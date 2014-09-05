@@ -6,3 +6,10 @@
 ; (= (__ conj [1] [2 3 4]) [[1] [1 2] [1 2 3] [1 2 3 4]])
 ; (= (last (__ * 2 [3 4 5])) (reduce * 2 [3 4 5]) 120)
 
+(fn reduct 
+	([f coll]
+		(reduct f (first coll) (rest coll)))
+	([f acc coll]
+		(if (empty? coll)
+			[acc]
+			(lazy-seq (cons acc (reduct f (f acc (first coll)) (rest coll)))))))
