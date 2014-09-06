@@ -6,3 +6,12 @@
 ; (= (__ [2 3 3 4 5]) [3 4 5])
 ; (= (__ [7 6 5 4]) [])
 
+(fn [coll]
+	(loop [best [] current [] remaining coll]
+		(if (empty? remaining)
+			(if (> (count best) 1) best [])
+			(let [next       (first remaining)
+						ascending? (or (empty? current) (> next (last current)))
+						ncurrent   (if ascending? (conj current next) [next])
+						nbest      (if (> (count ncurrent) (count best)) ncurrent best)]
+				(recur nbest ncurrent (rest remaining))))))
