@@ -4,3 +4,16 @@
 ; (= (__ ["meat" "mat" "team" "mate" "eat"])    #{#{"meat" "team" "mate"}})
 ; (= (__ ["veer" "lake" "item" "kale" "mite" "ever"])    #{#{"veer" "ever"} #{"lake" "kale"} #{"mite" "item"}})
 
+(fn [words]
+	(set
+		(filter
+			#(> (count %) 1)
+			(map
+				(fn [word]
+					(set
+						(filter
+							(fn [candidate]
+								(and
+									(= (set candidate) (set word))))
+							words)))
+				words))))
