@@ -7,3 +7,10 @@
 ; (= (__ 500) false)
 ; (= (__ 8128) true)
 
+(fn [n]
+	(let [divisors (fn [i]
+		(filter
+			identity
+			(for [x (range 1 i)]
+				(when (= 0 (rem i x)) x))))]
+		(= n (reduce + (divisors n)))))
