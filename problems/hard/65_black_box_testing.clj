@@ -8,3 +8,13 @@
 ; (= :set (__ #{10 (rand-int 5)}))
 ; (= [:map :set :vector :list] (map __ [{} #{} [] ()]))
 
+(fn [coll]
+	(try
+		(do (assoc coll :foo :bar) :map)
+		(catch Exception e 
+			(try
+				(do (disj coll #{}) :set)
+				(catch Exception e
+					(try
+						(do (subvec coll 0) :vector)
+						(catch Exception e :list)))))))
