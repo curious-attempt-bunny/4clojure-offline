@@ -5,3 +5,14 @@
 ; (let [more-legs       #{["cat" "man"] ["man" "snake"] ["spider" "cat"]}]   (= (__ more-legs)      #{["cat" "man"] ["cat" "snake"] ["man" "snake"]        ["spider" "cat"] ["spider" "man"] ["spider" "snake"]}))
 ; (let [progeny       #{["father" "son"] ["uncle" "cousin"] ["son" "grandson"]}]   (= (__ progeny)      #{["father" "son"] ["father" "grandson"]        ["uncle" "cousin"] ["son" "grandson"]}))
 
+#(loop [pairs %]
+	(let [new-pairs (for [left pairs
+												right pairs
+												:when (not= left right)
+												:when (= (second left) (first right))
+												:let [pair [(first left) (second right)]]
+												:when (not (contains? pairs pair))]
+										pair)]
+		(if (empty? new-pairs)
+			pairs
+			(recur (clojure.set/union pairs new-pairs)))))
