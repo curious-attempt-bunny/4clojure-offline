@@ -6,3 +6,26 @@
 ; (= (__ #{1 2 3})    #{#{} #{1} #{2} #{3} #{1 2} #{1 3} #{2 3} #{1 2 3}})
 ; (= (count (__ (into #{} (range 10)))) 1024)
 
+; (fn power-set [coll]
+; 	(prn coll ":")
+; 	(let [x (if (< (count coll) 2)
+; 		#{coll}
+; 		(set
+; 			(for [elem    coll
+; 						:let    [other (disj coll elem)]
+; 						pairing (power-set other)]
+; 				(do 
+; 					(prn pairing " + " elem)
+; 					(clojure.set/union pairing elem)))))] (do (prn x) (conj x #{}))))
+
+(fn power-set [coll]
+	(if (empty? coll)
+		#{coll}
+		(conj 
+			(set
+				(for [elem   coll
+							:let   [other (disj coll elem)]
+							subset (conj (power-set other) #{})]
+					(do 
+						(conj subset elem))))
+			#{})))
