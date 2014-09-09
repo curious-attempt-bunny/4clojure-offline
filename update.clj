@@ -31,7 +31,7 @@
 		    											(catch Exception e (if (= "correct clause!" (.getMessage e))
 		    																						 1
 		    																						 2)))
-		    intermediary (eval (nth form subtitutionindex))]
+		    intermediary (try (eval (nth form subtitutionindex)) (catch Exception e :intermediary_evaluation_unavailable))]
 		{:success (true? result) :test test :intermediary intermediary}))
 
 (spit "problems/state.csv" "" :append true)
