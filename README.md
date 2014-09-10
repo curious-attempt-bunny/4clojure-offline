@@ -1,6 +1,6 @@
 # Purpose
 
-Make it easier and quicker to iterate on [4clojure](http://4clojure.com) problems.
+Make it easier and quicker to iterate on [4clojure](http://4clojure.com) problems and track solutions in Git.
 
 # Getting setup
 
